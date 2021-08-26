@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="WpfApp1.ColorsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             xmlns:xf="clr-namespace:XamlFlair;assembly=XamlFlair.WPF"
+             mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:DesignWidth="715.858" d:DesignHeight="404.677">
+
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Resources/Background1.png" Opacity="1"/>
+    </UserControl.Background>
+
+    <!--Main Content-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--setting menu bar-->
+        <UserControl x:Name="TopMenu" Grid.Row="0">
+            <UserControl.DataContext>
+                <local:TopMenuControl/>
+            </UserControl.DataContext>
+        </UserControl>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="StartButton" Grid.Row="0" Grid.Column="3" FontFamily="Segoe MDL2 Assets" FontSize="80" Content="&#xE768;" Click="StartButton_Click" Width="100" Height="100" Foreground="WhiteSmoke" BorderThickness="0"
+                xf:Animations.Primary="{xf:Animate BasedOn={StaticResource Grow}, Event=MouseEnter}" 
+                xf:Animations.Secondary="{xf:Animate BasedOn={StaticResource Shrink}, Event=MouseLeave}">
+                <Button.Background>
+                    <SolidColorBrush Color="LightGray" Opacity=".5"/>
+                </Button.Background>
+            </Button>
+
+            <Image Source="Resources/ColorsLabel.png" Stretch="Fill" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                    xf:Animations.Primary="{xf:Animate BasedOn={StaticResource Grow}, Event=MouseEnter}" 
+                    xf:Animations.Secondary="{xf:Animate BasedOn={StaticResource Shrink}, Event=MouseLeave}" Opacity="1"/>
+
+            <Image x:Name="FlashCard" Stretch="Fill" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Visible"
+               xf:Animations.Primary="{xf:Animate BasedOn={StaticResource Grow}, Event=MouseEnter}" 
+                    xf:Animations.Secondary="{xf:Animate BasedOn={StaticResource Shrink}, Event=MouseLeave}"/>
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="WpfApp1.WelcomeAnimation" x:Name="WelcomeAnimationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             xmlns:xf="clr-namespace:XamlFlair;assembly=XamlFlair.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Resources/Background1.png" Opacity="1"/>
+    </UserControl.Background>
+
+    <!--Application Content-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--setting menu bar-->
+        <UserControl x:Name="TopMenu" Grid.Row="0">
+            <UserControl.DataContext>
+                <local:TopMenuControl/>
+            </UserControl.DataContext>
+        </UserControl>
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--User Control to Display Login Controls-->
+            <UserControl x:Name="PlayerBoxControl" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+
+            <Label x:Name="hello" Content="Hello There!" HorizontalAlignment="Center" VerticalAlignment="Center"
+               Grid.Row="0" FontFamily="Arial Rounded MT" FontSize="80" FontWeight="ExtraBold" 
+               xf:Animations.Primary="{xf:Animate BasedOn={StaticResource FadeInAndSlideFromBottom}, Delay=1000, OffsetY=8*, Duration=2000}"
+               xf:Animations.StartWith="{StaticResource FadeInAndSlideFromBottom}" Background="{x:Null}">
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF3D4042" Offset="0.551"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="#FF33ADE6" Offset="0.271"/>
+                        <GradientStop Color="#FF1A5976" Offset="0.843"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+        </Grid>
+    </Grid>
+    <!--End Application Content-->
+</UserControl>
